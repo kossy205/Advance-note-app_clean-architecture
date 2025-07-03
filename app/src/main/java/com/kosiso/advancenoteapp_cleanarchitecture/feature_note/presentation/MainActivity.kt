@@ -1,4 +1,4 @@
-package com.kosiso.advancenoteapp_cleanarchitecture
+package com.kosiso.advancenoteapp_cleanarchitecture.feature_note.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

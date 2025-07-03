@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id ("kotlin-kapt")
+    id ("dagger.hilt.android.plugin")
 }
 
 android {
@@ -16,6 +18,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     buildTypes {
@@ -37,6 +42,7 @@ android {
     buildFeatures {
         compose = true
     }
+
 }
 
 dependencies {
@@ -56,4 +62,26 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+
+    // Compose dependencies
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.1")
+    implementation ("androidx.navigation:navigation-compose:2.9.1")
+    implementation ("androidx.compose.material:material-icons-extended:2.9.1")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+    // Coroutines
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+
+    //Dagger - Hilt
+    implementation ("com.google.dagger:hilt-android:2.56.2")
+    kapt ("com.google.dagger:hilt-android-compiler:2.56.2")
+
+    // Room
+    implementation ("androidx.room:room-runtime:2.7.2")
+    kapt ("androidx.room:room-compiler:2.7.2")
+
+    // Kotlin Extensions and Coroutines support for Room
+    implementation ("androidx.room:room-ktx:2.7.2")
 }
