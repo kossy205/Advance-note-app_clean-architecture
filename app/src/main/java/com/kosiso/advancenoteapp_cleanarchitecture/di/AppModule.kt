@@ -10,6 +10,8 @@ import com.kosiso.advancenoteapp_cleanarchitecture.feature_note.data.repository.
 import com.kosiso.advancenoteapp_cleanarchitecture.feature_note.domain.repository.NoteRepository
 import com.kosiso.advancenoteapp_cleanarchitecture.feature_note.domain.uses_cases.DeleteNote
 import com.kosiso.advancenoteapp_cleanarchitecture.feature_note.domain.uses_cases.GetAllNotes
+import com.kosiso.advancenoteapp_cleanarchitecture.feature_note.domain.uses_cases.AddNote
+import com.kosiso.advancenoteapp_cleanarchitecture.feature_note.domain.uses_cases.GetNote
 import com.kosiso.advancenoteapp_cleanarchitecture.feature_note.domain.uses_cases.NotesUseCases
 import dagger.Module
 import dagger.Provides
@@ -47,7 +49,9 @@ object AppModule {
     fun provideNoteUseCases(noteRepository: NoteRepository): NotesUseCases{
         return NotesUseCases(
             getAllNotes = GetAllNotes(noteRepository),
-            deleteNote = DeleteNote(noteRepository)
+            deleteNote = DeleteNote(noteRepository),
+            addNote = AddNote(noteRepository),
+            getNote = GetNote(noteRepository)
         )
     }
 }
