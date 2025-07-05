@@ -15,13 +15,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.kosiso.advancenoteapp_cleanarchitecture.common.Constants
 import com.kosiso.advancenoteapp_cleanarchitecture.feature_note.presentation.notes.components.NoteItem
 import com.kosiso.advancenoteapp_cleanarchitecture.feature_note.presentation.notes.components.OrderSection
 import com.kosiso.advancenoteapp_cleanarchitecture.feature_note.presentation.util.Screen
 import kotlinx.coroutines.launch
+
 
 @ExperimentalAnimationApi
 @Composable
@@ -69,7 +72,7 @@ fun NotesScreen(
                 ) {
                     Icon(
                         imageVector = Icons.Default.MoreVert,
-                        contentDescription = "Sort"
+                        contentDescription = Constants.SORT
                     )
                 }
             }
@@ -81,7 +84,8 @@ fun NotesScreen(
                 OrderSection(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 16.dp),
+                        .padding(vertical = 16.dp)
+                        .testTag(Constants.ORDER_SECTION),
                     noteOrder = state.noteOrder,
                     onOrderChange = {
                         viewModel.onEvent(NotesEvent.Order(it))

@@ -10,7 +10,7 @@ buildscript {
         google()
     }
     dependencies {
-
+        classpath ("org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.0")
         classpath ("com.google.dagger:hilt-android-gradle-plugin:2.56.2")
 
     }
